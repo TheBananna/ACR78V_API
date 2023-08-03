@@ -1,2 +1,26 @@
 ﻿  ACR78V_API.cpp
-  ACR78V_API.vcxproj -> C:\Github\ACR78V_API\x64\Debug\ACR78V_API.exe
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(35,19): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(39,47): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(50,47): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(108,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(111,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(196,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(198,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(202,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(204,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(206,79): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(206,46): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(314,20): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(323,17): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(355,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(356,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(358,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(362,55): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(374,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(375,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(377,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(381,55): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(420,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(421,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nbonanno\Desktop\ACR78V_API\ACR78V_API\PositionersAPI.h(438,16): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  ACR78V_API.vcxproj -> C:\Users\nbonanno\Desktop\ACR78V_API\x64\Debug\ACR78V_API.exe

@@ -3,18 +3,13 @@
 
 #include <iostream>
 #include <string>
+#include "PositionersAPI.h"
 using namespace std;
-
-string make()
-{
-    char buf[12] = { 1, 2, 3, 4, 5, 6, 7, 8, 0, 0, 0, 1 };
-    string s = buf;
-    return buf;
-}
 
 int __cdecl main(int argc, char** argv)
 {
-    
-    cout << make() << "!";
+    startup();
+
+    drive_el_az(20, 20);
 }
 

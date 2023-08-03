@@ -23,8 +23,8 @@ using namespace std;
 
 
 #define DEFAULT_BUFLEN 512
-#define DEFAULT_PORT "27015"
-#define DEFAULT_IP "192.168.1.1"
+#define DEFAULT_PORT "5002"
+#define DEFAULT_IP "192.168.100.1"
 static SOCKET sock = INVALID_SOCKET;
 static string _ip_address = "192.168.100.1";
 static int _port = 5002;
@@ -48,7 +48,7 @@ string _dumb_transmit(SOCKET sock, string command)
 string _transmit(SOCKET sock, string command)
 {
     send(sock, command.c_str(), command.length(), NULL);
-    cout << "Sent: " << command << endl;
+    cout << "Sent: " << command;
     char buf[32];
     string full_response = "";
 
@@ -67,7 +67,6 @@ string _transmit(SOCKET sock, string command)
     }
 
     cout << "Recieved: " << full_response << endl;
-    delete[] buf;
 
     return full_response;
 }
@@ -82,7 +81,7 @@ string send_ascii_command(const string init_command)
         response = _transmit(sock, command);
         if (response.find("Unknown Command") != -1 && count < 5)
         {
-            send_ascii_command("PROG0");
+            _dumb_transmit(sock, "PROG0\r\n");
             count++;
         }
         else if (count >= 5)
@@ -90,6 +89,8 @@ string send_ascii_command(const string init_command)
             cout << "Communication Error" << endl;
             return "";
         }
+        else
+            break;
     }
     return response;
 }
@@ -101,25 +102,26 @@ bool is_number(const std::string& s)
 }
 
 //orig is the sequence that is replaced everywhere by orig
-string replace(const string s, const string orig, const string replace)
+string _replace(const string s, const string orig, const string replace)
 {
     string copy(s);
     int pos = copy.find(orig);
     while (pos != -1) {
         copy.replace(pos, orig.length(), replace);
+        pos = copy.find(orig);
     }
     return copy;
 }
 
 float _decode_response(const string& response)
 {
-    replace(response, "\n", " ");
+    _replace(response, "\n", " ");
     stringstream ss(response);
     string word;
     string longest = "";
     while (ss >> word)
     {
-        string decimated = replace(replace(word, "-", ""), ".", "");
+        string decimated = _replace(_replace(word, "-", ""), ".", "");
         if (decimated.length() > longest.length() && is_number(decimated))
             longest = decimated;
     }
@@ -334,7 +336,7 @@ void halt()
 
 void reboot() 
 {
-    _dumb_transmit(sock, "reboot");
+    _dumb_transmit(sock, "reboot\r\n");
     closesocket(sock);
     WSACleanup();
     Sleep(20000);
