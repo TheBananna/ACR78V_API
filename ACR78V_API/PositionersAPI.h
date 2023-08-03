@@ -82,6 +82,7 @@ string send_ascii_command(const string init_command)
         if (response.find("Unknown Command") != -1 && count < 5)
         {
             _dumb_transmit(sock, "PROG0\r\n");
+            cout << "Comms Retry on : " + command;
             count++;
         }
         else if (count >= 5)
@@ -186,7 +187,7 @@ void set_motion_parameters(float vel, float acc, float dec, float stp)
 
 void set_angle(float el, float az)
 {
-    send_ascii_command("RES" + _motors[0] + " " + to_string(el) + " RES" + _motors[1] + " " + to_string(az));
+    send_ascii_command("RES " + _motors[0] + " " + to_string(el) + " RES " + _motors[1] + " " + to_string(az));
 }
 
 float _cold_start()
@@ -214,8 +215,8 @@ float bring_to_home()
 void switch_to_az_el() {
     _motors[0] = "X";
     _motors[1] = "Y";
-    _centers[0] = 3029374;
-    _centers[1] = 34538205;
+    _centers[0] = 3029374; // el
+    _centers[1] = 34538205;// az
     _ratios[0] = 189 * 524288;
     _ratios[1] = 765 * 524288;
     _pos_alias[0] = "P12290";
@@ -303,7 +304,7 @@ int startup()
     switch_to_az_el();
     _dumb_transmit(sock, "PROG0\r\n");
     _dumb_transmit(sock, "DRIVE ON X Y Z A\r\n");
-    set_motion_parameters(10, 10, 10, _vel);
+    set_motion_parameters(_vel, 10, 10, 10);
 
     if ((int)_decode_response(send_ascii_command("? started")) == 1)
     {
@@ -452,8 +453,8 @@ void velocity_steer_run()
         float vecy = y - moves_y_queue[i - 1];
 
         float mag = sqrt(vecx * vecx + vecy * vecy);
-        vecx /= mag;
-        vecy /= mag;
+        vecx = vecx / mag * vel;
+        vecy = vecy / mag * vel;
 
         send_ascii_command("jog vel " + _motors[0] + to_string(vecx) + " " + _motors[1] + to_string(vecy));
         send_ascii_command("jog " + (string)((vecx >= 0) ? "fwd" : "rev") + " " + _motors[0]);
@@ -462,8 +463,8 @@ void velocity_steer_run()
         float next_vecx = moves_x_queue[i + 1] - x;
         float next_vecy = moves_y_queue[i + 1] - y;
         mag = sqrt(next_vecx * next_vecx + next_vecy * next_vecy);
-        next_vecx /= mag;
-        next_vecy /= mag;
+        next_vecx = next_vecx / mag * vel;
+        next_vecy = next_vecy / mag * vel;
 
         float dvecx = next_vecx - vecx;
         float dvecy = next_vecy - vecy;
@@ -480,8 +481,8 @@ void velocity_steer_run()
         }
     }
 
+    send_ascii_command("jog abs " + _motors[0] + to_string(moves_x_queue[moves_x_queue.size() - 1]) + " " + _motors[1] + to_string(moves_y_queue.size() - 1));
     send_ascii_command("jog off " + _motors[0] + " " + _motors[1]);
-    send_ascii_command("jog abs " + _motors[0] + to_string(moves_x_queue[i + 1]) + " " + _motors[1] + to_string(moves_y_queue[i + 1]));
     moves_x_queue.clear();
     moves_y_queue.clear();
 }

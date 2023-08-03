@@ -4,12 +4,16 @@
 #include <iostream>
 #include <string>
 #include "PositionersAPI.h"
+#include <vector>
+
 using namespace std;
 
 int __cdecl main(int argc, char** argv)
 {
     startup();
-
-    drive_el_az(20, 20);
+    vector<float> xs = { 0, 1, 4, 9, 16, 25, 36 };
+    vector<float> ys = { 0, 1, 2, 3, 4, 5, 6 };
+    add_moves(xs, ys);
+    velocity_steer_run();
 }
 
