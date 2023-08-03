@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="ACR78V_API.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PositionersAPI.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
