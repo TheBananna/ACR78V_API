@@ -177,7 +177,7 @@ float drive_el_az(float el, float az, bool ignore_limits = false)
     return max(abs(el) / _vel, abs(az) / _vel);
 }
 
-void set_motion_parameters(float vel, float acc, float dec, float stp)
+void set_motion_parameters(float acc, float dec, float stp, float vel)
 {
     send_ascii_command("VEL " + to_string(vel));
     send_ascii_command("ACC " + to_string(acc));
@@ -304,7 +304,7 @@ int startup()
     switch_to_az_el();
     _dumb_transmit(sock, "PROG0\r\n");
     _dumb_transmit(sock, "DRIVE ON X Y Z A\r\n");
-    set_motion_parameters(_vel, 10, 10, 10);
+    set_motion_parameters(10, 10, 10, _vel);
 
     if ((int)_decode_response(send_ascii_command("? started")) == 1)
     {
