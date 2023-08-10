@@ -32,7 +32,7 @@ static string _motors[2] = { "X", "Y" };
 static string _pos_alias[2] = { "P12290", "P12546" };
 static int _centers[2] = { 3029374, 34538205 };
 static int _ratios[2] = { 189 * 524288, 765 * 524288 };
-static float _vel = 4.9;
+static float _vel = 5;
 
 string _dumb_transmit(SOCKET sock, string command)
 {
